@@ -1,0 +1,35 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Pagination from "@components/PortfolioPagination.astro";
+import Card from "@components/PortfolioCard";
+import { SITE } from "@config";
+import type { Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+
+
+export interface Props {
+  page: Page<CollectionEntry<"portfolio">>;
+}
+
+const { page } = Astro.props;
+---
+
+<Layout title={`Portfolio | ${SITE.title}`}>
+  <Header activeNav="portfolio" />
+  <Main pageTitle="Portfolio" pageDesc="My projects">
+    <ul>
+      {
+        page.data.map(({ data, slug }) => (
+          <Card href={`/portfolio/${slug}/`} frontmatter={data}/>
+        ))
+      }
+    </ul>
+  </Main>
+
+  <Pagination {page} />
+
+  <Footer noMarginTop={page.lastPage > 1} />
+</Layout>
