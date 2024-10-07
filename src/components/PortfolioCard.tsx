@@ -3,15 +3,13 @@ import type { CollectionEntry } from "astro:content";
 
 export interface Props {
   href?: string;
-  frontmatter: CollectionEntry<"portfolio">["data"];
+  frontmatter: object;
   secHeading?: boolean;
 
 }
 
 export default function Card({ href, frontmatter, secHeading = true }: Props) {
-  console.log("href");
-  console.log(href);
-  const { title, tags, description, ogImage } = frontmatter;
+const { title, tags, description, ogImage } = frontmatter;
 console.log(typeof ogImage);
 let myVarIsObject = false;
 

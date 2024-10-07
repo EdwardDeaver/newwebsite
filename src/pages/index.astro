@@ -10,7 +10,7 @@ import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import { SITE, SOCIALS } from "@config";
 
-const posts = await getCollection("blog");
+const posts = await getCollection("portfolio");
 
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
@@ -23,7 +23,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>Mingalaba</h1>
+      <h1>{SITE.author}</h1>
       <a
         target="_blank"
         href="/rss.xml"
@@ -40,22 +40,11 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         </svg>
         <span class="sr-only">RSS Feed</span>
       </a>
-
+      <p>{SITE.desc}</p>
       <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
+        {SITE.description}
       </p>
-      <p>
-        Read the blog posts or check
-        <LinkButton
-          className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
-          href="https://github.com/satnaing/astro-paper#readme"
-        >
-          README
-        </LinkButton> for more info.
-      </p>
+     
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
@@ -73,13 +62,15 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       featuredPosts.length > 0 && (
         <>
           <section id="featured">
-            <h2>Featured</h2>
+            <h2>Featured Projects</h2>
             <ul>
               {featuredPosts.map(({ data, slug }) => (
                 <Card
-                  href={`/posts/${slug}/`}
+                  href={`/portfolio/${slug}/`}
                   frontmatter={data}
                   secHeading={false}
+                  dateShow={false}
+                  displayTags={true}
                 />
               ))}
             </ul>
@@ -101,6 +92,9 @@ const socialCount = SOCIALS.filter(social => social.active).length;
                     href={`/posts/${slug}/`}
                     frontmatter={data}
                     secHeading={false}
+                    dateShow={true}
+                    displayTags={true}
+
                   />
                 )
             )}

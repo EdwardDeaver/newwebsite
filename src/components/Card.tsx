@@ -1,15 +1,24 @@
 import { slugifyStr } from "@utils/slugify";
 import Datetime from "./Datetime";
 import type { CollectionEntry } from "astro:content";
+import Tag from "@components/Tag.astro";
 
 export interface Props {
   href?: string;
-  frontmatter: CollectionEntry<"blog">["data"];
+  frontmatter: object;
   secHeading?: boolean;
+  dateShow: boolean;
+  displayTags: boolean;
 }
 
-export default function Card({ href, frontmatter, secHeading = true }: Props) {
-  const { title, pubDatetime, modDatetime, description } = frontmatter;
+export default function Card({ href, frontmatter, dateShow, displayTags, secHeading = true }: Props) {
+  const { title, tags, ogImage, pubDatetime, modDatetime, description } = frontmatter;
+  let myVarIsObject = false;
+  
+
+  if(typeof ogImage == 'object'){
+    myVarIsObject = true;
+  }
 
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
@@ -17,7 +26,7 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
   };
 
   return (
-    <li className="my-6">
+    <li className="my-6 card bg-base-100 w-full">
       <a
         href={href}
         className="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
@@ -27,8 +36,20 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
         ) : (
           <h3 {...headerProps}>{title}</h3>
         )}
+          <figure>
+
+        { myVarIsObject ? (<img 
+        src={ogImage.src!}
+        alt={description} />
+        ) : ''} 
+        </figure>
       </a>
-      <Datetime pubDatetime={pubDatetime} modDatetime={modDatetime} />
+      {dateShow ? (<Datetime pubDatetime={pubDatetime} modDatetime={modDatetime} />) : ''}
+      <div className="flex space-x-2"> 
+      { 
+      tags.map((object, i) => <a href={'/tags/'+object}><span className="inline-flex items-center rounded-md bg-pink-50 px-2 py-1 text-xs font-medium text-pink-700 ring-1 ring-inset " key={i}> {object} </span> </a>)
+      }
+      </div>
       <p>{description}</p>
     </li>
   );

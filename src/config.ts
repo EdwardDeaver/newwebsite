@@ -13,6 +13,7 @@ export const SITE: Site = {
   postPerIndex: 4,
   postPerPage: 5,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
+  description: "Creative technologist focusing on civic advocacy, art and cycling. I am probably running or climbing atm."
 };
 
 export const LOCALE = {
@@ -30,39 +31,21 @@ export const LOGO_IMAGE = {
 export const SOCIALS: SocialObjects = [
   {
     name: "Github",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://github.com/edwarddeaver",
     linkTitle: ` ${SITE.title} on Github`,
     active: true,
   },
   {
-    name: "Facebook",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on Facebook`,
-    active: true,
-  },
-  {
     name: "Instagram",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://github.com/edwarddeaver.me",
     linkTitle: `${SITE.title} on Instagram`,
     active: true,
   },
   {
     name: "LinkedIn",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://github.com/edwardcdeaveriv",
     linkTitle: `${SITE.title} on LinkedIn`,
     active: true,
-  },
-  {
-    name: "Mail",
-    href: "mailto:yourmail@gmail.com",
-    linkTitle: `Send an email to ${SITE.title}`,
-    active: false,
-  },
-  {
-    name: "Twitter",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on Twitter`,
-    active: false,
   },
   {
     name: "Twitch",
