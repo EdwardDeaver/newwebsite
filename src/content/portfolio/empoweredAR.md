@@ -1,18 +1,20 @@
 ---
-author: Sat Naing
+author: Edward Deaver
 pubDatetime: 2024-01-04T09:30:41.816Z
-title: AstroPaper 5.0
-slug: "astro-paper-v4-5"
+title: EmpoweredAR
+slug: "empoweredar-mit-reality-hack-2024"
 featured: true
 ogImage: ../../assets/images/logo.jpg
 tags:
-  - release
+  - AR
+  - MIT Reality Hack
+  - Unity
 description: "AstroPaper v4: ensuring a smoother and more feature-rich blogging experience."
 ---
 
 EmpoweredAR leverages the ability of Xreal eyewear to generate meshes of the physical environment and combined with accurate and reliable distance tracking, can provide wearers with an auditory map.
 
-<iframe title="vimeo-player" src="https://player.vimeo.com/video/907226882?h=22a3f6bea3" width="640" height="360" frameborder="0"    allowfullscreen></iframe>
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/907226882?h=22a3f6bea3" class=" w-full aspect-video" frameborder="0"    allowfullscreen></iframe>
 
 ### Inspiration
 
