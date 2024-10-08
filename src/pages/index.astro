@@ -10,11 +10,13 @@ import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import { SITE, SOCIALS } from "@config";
 
-const posts = await getCollection("portfolio");
+const portfolioItems = await getCollection("portfolio");
+const sortedPortfolioItems = getSortedPosts(portfolioItems);
+const featuredPosts = sortedPortfolioItems.filter(({ data }) => data.featured);
 
-const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const blogPosts = await getCollection("blog");
+const sortedBlogItems = getSortedPosts(blogPosts);
+const recentPosts = sortedBlogItems.filter(({ data }) => !data.featured);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---
@@ -89,7 +91,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
               ({ data, slug }, index) =>
                 index < SITE.postPerIndex && (
                   <Card
-                    href={`/posts/${slug}/`}
+                    href={`/blog/${slug}/`}
                     frontmatter={data}
                     secHeading={false}
                     dateShow={true}
