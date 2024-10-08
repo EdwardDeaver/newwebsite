@@ -23,7 +23,7 @@ const { page } = Astro.props;
     <ul>
       {
         page.data.map(({ data, slug }) => (
-          <Card href={`/portfolio/${slug}/`} frontmatter={data} dateShow={false} displayTags={true}/>
+          <Card href={`/portfolio/${slug}/`} frontmatter={data} dateShow={false} displayTags={true} displayImage={true}/>
         ))
       }
     </ul>
