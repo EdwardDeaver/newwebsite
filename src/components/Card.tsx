@@ -9,9 +9,10 @@ export interface Props {
   secHeading?: boolean;
   dateShow: boolean;
   displayTags: boolean;
+  displayImage: boolean;
 }
 
-export default function Card({ href, frontmatter, dateShow, displayTags, secHeading = true }: Props) {
+export default function Card({ href, displayImage= false, frontmatter, dateShow, displayTags, secHeading = true }: Props) {
   const { title, tags, ogImage, pubDatetime, modDatetime, description } = frontmatter;
   let myVarIsObject = false;
   
@@ -38,7 +39,7 @@ export default function Card({ href, frontmatter, dateShow, displayTags, secHead
         )}
           <figure>
 
-        { myVarIsObject ? (<img 
+        { (myVarIsObject && displayImage) ? (<img 
         src={ogImage.src!}
         alt={description} />
         ) : ''} 

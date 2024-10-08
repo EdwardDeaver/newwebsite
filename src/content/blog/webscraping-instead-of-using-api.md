@@ -6,6 +6,7 @@ title: Using Web Scraping Instead of the API
 slug: using-web-scraping-instead-of-api
 featured: false
 draft: false
+ogImage: ../../assets/images/Selenium_Logo.png
 tags:
   - api
   - webscraping
