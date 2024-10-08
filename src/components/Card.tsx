@@ -15,8 +15,8 @@ export interface Props {
 export default function Card({ href, displayImage= false, frontmatter, dateShow, displayTags, secHeading = true }: Props) {
   const { title, tags, ogImage, pubDatetime, modDatetime, description } = frontmatter;
   let myVarIsObject = false;
-  
-
+console.log(title);
+console.log(typeof ogImage );
   if(typeof ogImage == 'object'){
     myVarIsObject = true;
   }
@@ -39,8 +39,12 @@ export default function Card({ href, displayImage= false, frontmatter, dateShow,
         )}
           <figure>
 
-        { (myVarIsObject && displayImage) ? (<img 
+        { ((typeof ogImage == 'object') && displayImage) ? (<img 
         src={ogImage.src!}
+        alt={description} />
+        ) : ''} 
+                { ((typeof ogImage == 'string') && displayImage) ? (<img 
+        src={ogImage!}
         alt={description} />
         ) : ''} 
         </figure>
